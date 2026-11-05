@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Adventures: Word Quest</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game">
+    <header class="title">
+      <h1>Bitcoin Adventures</h1>
+      <p class="subtitle">Word Quest</p>
+    </header>
+
+    <!-- The character and their speech bubble -->
+    <section class="guide">
+      <div class="guide-avatar" id="guide-avatar">₿</div>
+      <div class="bubble" id="bubble">Hi friend! Can you guess my Bitcoin word?</div>
+    </section>
+
+    <!-- Lives: one coin rolls away for each wrong guess -->
+    <section class="coins" id="coins" aria-label="Lives left"></section>
+
+    <!-- The hidden word, shown as blanks -->
+    <section class="word" id="word" aria-live="polite"></section>
+
+    <!-- Hint for the current word -->
+    <p class="hint" id="hint"></p>
+
+    <!-- On-screen letter keys (also work with a mouse or a finger) -->
+    <section class="keyboard" id="keyboard"></section>
+
+    <button class="play-again" id="play-again" hidden>Play again</button>
+  </main>
+
+  <script src="words.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
