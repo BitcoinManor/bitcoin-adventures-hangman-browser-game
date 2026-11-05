@@ -1,0 +1,12 @@
+# Computer clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
+
+# Big original art files (export web-sized copies into assets/ instead)
+*.psd
+*.ai
