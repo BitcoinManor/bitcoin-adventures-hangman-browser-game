@@ -1,0 +1,215 @@
+/* Colors used across the game */
+:root {
+  --orange: #f7931a;
+  --orange-dark: #c46f00;
+  --sky: #fff7ec;
+  --ink: #2b2118;
+  --white: #ffffff;
+  --green: #2e9e5b;
+  --red: #d64545;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--sky);
+  color: var(--ink);
+  font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.game {
+  width: 100%;
+  max-width: 760px;
+  padding: 16px;
+  text-align: center;
+}
+
+.title h1 {
+  margin: 8px 0 0;
+  color: var(--orange-dark);
+  font-size: 2.2rem;
+}
+
+.subtitle {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Character + speech bubble */
+.guide {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0;
+  text-align: left;
+}
+
+.guide-avatar {
+  flex: 0 0 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slide-in 0.5s ease-out;
+}
+
+.bubble {
+  position: relative;
+  flex: 1;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  padding: 14px 18px;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  animation: pop 0.3s ease-out;
+}
+
+/* The little triangle pointing at the character */
+.bubble::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 12px solid transparent;
+  border-right-color: var(--ink);
+  border-left: 0;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(-120px); opacity: 0; }
+  to   { transform: translateX(0);      opacity: 1; }
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* Lives (coins) */
+.coins {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.coin {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 3px solid var(--orange-dark);
+  color: var(--white);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s, opacity 0.6s;
+}
+
+.coin.lost {
+  transform: rotate(180deg) scale(0.7);
+  opacity: 0.15;
+}
+
+/* The word blanks */
+.word {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0 8px;
+}
+
+.letter {
+  width: 40px;
+  height: 52px;
+  border-bottom: 4px solid var(--ink);
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.letter.space {
+  border-bottom: none;
+}
+
+.letter.missed {
+  color: var(--red);
+}
+
+.hint {
+  min-height: 1.5em;
+  font-style: italic;
+}
+
+/* On-screen keyboard */
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 16px 0;
+}
+
+.key {
+  width: 44px;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.key:hover:not(:disabled) {
+  background: var(--orange-dark);
+}
+
+.key.right {
+  background: var(--green);
+}
+
+.key.wrong {
+  background: var(--red);
+}
+
+.key:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.play-again {
+  margin-top: 8px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 24px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .guide-avatar { flex-basis: 64px; height: 64px; font-size: 2rem; }
+  .letter { width: 28px; height: 40px; font-size: 1.5rem; }
+  .key { width: 34px; height: 42px; font-size: 1rem; }
+}
